@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<maps>
+		<Map1>
+			<information name="TestMap1" playercount="4"></information>
+			<mapData>
+				
+			</mapData>
+		</Map1>
+		<Map2>
+			<information name="TestMap2" playercount="3"></information>
+			<mapData>
+				
+			</mapData>
+		</Map2>
+	</maps>
+	<items>
+		<i0001>
+			<sprite path="assets/play/sprites/default.png" />
+			<boosts health="0" power="0" />
+		</i0001>
+		<i0002>
+			<sprite path="assets/play/sprites/healthPotion.png" />
+			<boosts health="200" power="0" />
+		</i0002>
+	</items>
+	<maps>
+		<spawn>
+			<gates>
+				<g0001 destination="wilderness" destinationX="4" destinationY="4" />
+				<g0002 destination="city" destinationX="10" destinationY="4" />
+			</gates>
+		</spawn>
+		<wilderness>
+			<gates>
+				<g0001 destination="spawn" destinationX="1" destinationY="3" />
+			</gates>
+		</wilderness>
+	</maps>
+</root>
