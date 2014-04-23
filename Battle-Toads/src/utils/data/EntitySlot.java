@@ -1,6 +1,6 @@
 package utils.data;
 
-public class PlayerSlot
+public class EntitySlot
 {
 	private String TAG;
 	private String objectId;
@@ -8,13 +8,13 @@ public class PlayerSlot
 	/**
 	 * non-visible data value holding a slot 'tag' and corresponding objectId
 	 */
-	PlayerSlot(String tag, String id)
+	EntitySlot(String tag, String id)
 	{
 		TAG = tag;
 		objectId = id;
 	}
 	
-	PlayerSlot(String tag)
+	EntitySlot(String tag)
 	{
 		TAG = tag;
 		objectId = "#0001";

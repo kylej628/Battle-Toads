@@ -1,9 +1,6 @@
 package screens;
 
 import playScreen.GUI.GuiClass;
-import playScreen.entities.Entity;
-import playScreen.entities.Entity.Script;
-import utils.data.Coord;
 import utils.map.MapGrid;
 import applicationFiles.BattleToads;
 import applicationFiles.DebuggableScreen;
@@ -11,7 +8,6 @@ import applicationFiles.DebuggableScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -44,9 +40,6 @@ public class PlayClass implements DebuggableScreen{
 	//Mouse position //
 	private int MouseX=0, MouseY=0;
 	
-	//Testing sprite//
-	Entity testEntity;
-	
 	public PlayClass(BattleToads GAME)
 	{
 		
@@ -69,9 +62,6 @@ public class PlayClass implements DebuggableScreen{
 		
 		//Initializes the GUI --------------//
 		GUI = new GuiClass();
-		
-		//Testing sprite//
-		testEntity = new Entity("SpriteTest", new Texture(Gdx.files.internal("assets/play/sprites/entityTest.png")), new Coord(0, 0), Script.ONE_DIRECTION);
 	}
 
 	double tempX = 0;
@@ -106,11 +96,6 @@ public class PlayClass implements DebuggableScreen{
 		GAME.font.draw(batch, "Nother test", 10, -10);
 		GAME.font.draw(batch, "Cam Position: " + cam.position.x + ", " + cam.position.y + ":", 10, 20);
 		GAME.font.draw(batch, "Mouse: " + Gdx.input.getX() + ", " + Gdx.input.getY() + "/n" + "Grid Position: (" + MouseX + ", " + MouseY + ")", 0, 0);
-		
-		//Test sprite//
-		this.testEntity.render(batch);
-		this.testEntity.update(Gdx.graphics.getDeltaTime());
-		
 		batch.end();
 		
 		

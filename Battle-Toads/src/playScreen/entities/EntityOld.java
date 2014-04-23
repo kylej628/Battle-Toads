@@ -6,8 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-public class Entity {
+@Deprecated
+public class EntityOld {
 
 	public enum Script{
 		ONE_DIRECTION, 	//Back and forth movement
@@ -26,7 +26,7 @@ public class Entity {
 	
 	Script script;
 	
-	public Entity(String passedID, Texture passedSprite, Coord passedPosition, Script passedScript)
+	public EntityOld(String passedID, Texture passedSprite, Coord passedPosition, Script passedScript)
 	{
 		this.interactionId = passedID;
 		this.sprite = passedSprite;
@@ -40,6 +40,8 @@ public class Entity {
 	{
 		if(!walking)
 		{
+			//Rounds the player to the nearest position,
+			//this works for every situation.
 			position.X = (int) Math.round(xPos / 32);
 			position.Y = (int) Math.round(yPos / 32);
 			

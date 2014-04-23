@@ -7,16 +7,16 @@ import com.badlogic.gdx.utils.Array;
 
 public class EntityHandler {
 	
-	Array<Entity> entities;
+	Array<EntityOld> entities;
 	
 	public EntityHandler()
 	{
-		entities = new Array<Entity>();
+		entities = new Array<EntityOld>();
 	}
 	
 	public void addEntity(String passedID, Texture passedSprite, Coord passedCoord)
 	{
-		entities.add(new Entity(passedID, passedSprite, passedCoord, null));
+		entities.add(new EntityOld(passedID, passedSprite, passedCoord, null));
 	}
 	
 	public void update(float delta)
