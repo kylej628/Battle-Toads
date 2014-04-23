@@ -16,7 +16,7 @@ public class EntityHandler {
 	
 	public void addEntity(String passedID, Texture passedSprite, Coord passedCoord)
 	{
-		entities.add(new Entity(passedID, passedSprite, passedCoord));
+		entities.add(new Entity(passedID, passedSprite, passedCoord, null));
 	}
 	
 	public void update(float delta)
