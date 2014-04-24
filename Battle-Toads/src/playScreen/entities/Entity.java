@@ -1,7 +1,9 @@
 package playScreen.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
 import utils.data.Coord;
@@ -11,18 +13,27 @@ import utils.data.EntitySlot.SlotType;
 public class Entity {
 	
 	//Variables
-	Coord position;
-	Sprite sprite;
-	Animation animatedSprite;
-	int direction;
-	Array<EntitySlot> slots;
+	//*\Identifiers/*\\
+	String ID, DisplayName;
 	
-	public Entity(Coord position, Sprite passedSprite, Animation passedAnimation, int passedDirection)
+	//*\Data/*\\
+	Coord position;
+	Texture[] sprite;
+	Animation animatedSprite;
+	int direction, originDirection;
+	Array<EntitySlot> slots;
+	boolean isInteractable = true;
+	boolean isInteracting = false;
+	
+	public Entity(String passedID, String passedName, Coord passedPosition, Texture[] passedSprite, Animation passedAnimation, int passedDirection)
 	{
-		this.position.set(position);
+		ID = passedID;
+		DisplayName = passedName;
+		this.position.set(passedPosition);
 		sprite = passedSprite;
 		animatedSprite = passedAnimation;
 		direction = passedDirection;
+		originDirection = direction;
 		slots = new Array<EntitySlot>();
 		/*Since no slotTags were passed, defaults assumed*/
 		slots.add(new EntitySlot(SlotType.ARMOR, "Head"));		//Head slot (armor)
@@ -34,8 +45,10 @@ public class Entity {
 		slots.add(new EntitySlot(SlotType.WEAPON, "Left:"));	//Left hand slot (weapon)
 	}
 	
-	public Entity(Coord position, Sprite passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots)
+	public Entity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots)
 	{
+		ID = passedID;
+		DisplayName = passedName;
 		this.position.set(position);
 		sprite = passedSprite;
 		animatedSprite = passedAnimation;
@@ -43,4 +56,41 @@ public class Entity {
 		slots = new Array<EntitySlot>(passedSlots);
 	}
 	
+	public void update(float deltaTime)
+	{
+		
+	}
+	
+	public void render(SpriteBatch batch)
+	{
+		if(isInteracting)
+			batch.draw(sprite[direction], position.getX(), position.getY());
+		else if(animatedSprite != null)
+			batch.draw(animatedSprite.getKeyFrame(Gdx.graphics.getDeltaTime()), position.getX(), position.getY());
+	}
+	
+	public String getDisplayName()
+	{
+		return DisplayName;
+	}
+	
+	public String getID()
+	{
+		return ID;
+	}
+	
+	public void interact(int direction)
+	{
+		if(isInteractable){
+			this.direction = direction;
+			isInteracting = true;}
+	}
+	
+	public void stopInteract()
+	{
+		if(isInteractable){
+			this.direction = originDirection;
+			this.isInteracting = false;}
+	}
 }
+
