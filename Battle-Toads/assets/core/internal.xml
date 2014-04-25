@@ -32,9 +32,19 @@
 			</gates>
 			<entities>
 				<e0001 type="stationary" name="villager" x="4" y="10" direction="1">
-					<Textures  />
-					<Animation />
+					<Texture  path="assets/play/sprites/entities/villager.png"/>
+					<Animation path="assets/play/sprites/entities/villagerAnimation.png">
+						<walking frames="10" />
+						<attacking frames="4" />
+					</Animation>
 				</e0001>
+				<e0002 type="moving" name="knight" x="10" y="3" direction="3">
+					<Texture  path="assets/play/sprites/entities/knight.png"/>
+					<Animation path="assets/play/sprites/entities/knightAnimation.png">
+						<walking frames="10" />
+						<attacking frames="4" />
+					</Animation>
+				</e0002>
 			</entities>
 		</spawn>
 		<wilderness>
