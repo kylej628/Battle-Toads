@@ -22,10 +22,10 @@ public class List
 		this.agents = passedAgents;
 		
 		//Creates a new String array with the size of the list and the number of agents
-		String[][] ListItems = new String[passedParser.getList(RootKey).length][passedAgents.length];
+		String[][] ListItems = new String[passedParser.getList(RootKey).size][passedAgents.length];
 		
 		//Populates the String array
-		for(int i = 0; i < passedParser.getList(RootKey).length; i++)//FOR:ITEMLIST
+		for(int i = 0; i < passedParser.getList(RootKey).size; i++)//FOR:ITEMLIST
 		{
 			for(int j = 0; j < passedAgents.length; j++)//FOR:AGENTS
 			{

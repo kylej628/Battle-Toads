@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<maps>
+	<maps_Old>
 		<Map1>
 			<information name="TestMap1" playercount="4"></information>
 			<mapData>
@@ -25,7 +25,7 @@
 		</i0002>
 	</items>
 	<maps>
-		<spawn>
+		<spawn mID="01" IFP="assets/play/map/spawn.tmx">
 			<gates>
 				<g0001 destination="wilderness" destinationX="4" destinationY="4" />
 				<g0002 destination="city" destinationX="10" destinationY="4" />
@@ -47,7 +47,7 @@
 				</e0002>
 			</entities>
 		</spawn>
-		<wilderness>
+		<wilderness mID="02">
 			<gates>
 				<g0001 destination="spawn" destinationX="1" destinationY="3" />
 			</gates>

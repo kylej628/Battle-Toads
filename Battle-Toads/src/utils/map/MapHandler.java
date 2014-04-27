@@ -1,6 +1,8 @@
 package utils.map;
 
 import playScreen.entities.EntityHandler;
+import utils.xml.XMLReader;
+import utils.xml.XMLReader.ObjectType;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
+import com.badlogic.gdx.utils.XmlReader.Element;
 
 /*-------------------------------------------------*
  *=================MAP HANDLER=====================*
@@ -19,10 +22,18 @@ import com.badlogic.gdx.utils.XmlReader;
  * the map to be functional. Anything to do with the
  * map will be handled through here.
  */
+
+/*
+ * mID LOOKUP:
+ * 01: SPAWN
+ * 02: WILDERNESS
+ * 03: 
+ */
 public class MapHandler {
 	
 	//Variables ---------//
 	Array<TiledMap> maps;
+	Array<Element> xmlMaps;
 	MapGrid GRID;
 	private OrthogonalTiledMapRenderer renderer;
 	
@@ -31,7 +42,10 @@ public class MapHandler {
 	//Entity Handler ----//
 	EntityHandler Entities;
 	
-	public MapHandler()
+	//XML Reader --------//
+	XMLReader xml;
+	
+	public MapHandler(XMLReader XML)
 	{
 		//Creates the array for maps --//
 		maps = new Array<TiledMap>();
@@ -44,13 +58,17 @@ public class MapHandler {
 		
 		//Creates the entity handler --//
 		Entities = new EntityHandler();
+		
+		//Ties the passed XML Reader to the class!
+		xml = XML;
+		xmlMaps = xml.getList("maps");
 	}
 	
 	/**
 	 * Adds a map to the map array.
 	 * @param FileName
 	 */
-	public void loadMap(String FileName)
+	private void internalLoad(String FileName)
 	{
 		this.maps.add(new TmxMapLoader().load(FileName));
 	}
@@ -86,6 +104,26 @@ public class MapHandler {
 	public void render(SpriteBatch batch)
 	{
 		renderer.render();
+	}
+	
+	public void loadMap2(String name)
+	{
+		boolean temp = false;
+		Element workingElement;
+		for(int i = 0; i < maps.size; i++)
+		{
+			if(maps.get(i).getProperties().get("name").equals(name))
+			{
+				temp = true;
+				CURRENT_MAP = i;
+			}
+		}
+		if(!temp)
+		{
+			workingElement = xml.getElement(ObjectType.MAP, name);
+			this.internalLoad(workingElement.getAttribute("IFP"));
+			
+		}
 	}
 
 }

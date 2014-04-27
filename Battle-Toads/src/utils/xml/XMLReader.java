@@ -1,5 +1,8 @@
 package utils.xml;
 
+import org.w3c.dom.NodeList;
+
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
@@ -21,11 +24,6 @@ public class XMLReader
 	{
 		reader = new XmlReader();
 		ROOT = reader.parse(file);
-	}
-	
-	public String[] getList(String Key)
-	{
-		return DEFAULT_ARRAY;
 	}
 	
 	public String getData(String Key)
@@ -52,5 +50,10 @@ public class XMLReader
 	public Element getElement(String id)
 	{
 		return ROOT.getChildByNameRecursive(id);
+	}
+	
+	public Array<Element> getList(String tag)
+	{
+		return ROOT.getChildrenByNameRecursively(tag);
 	}
 }
