@@ -2,7 +2,7 @@ package playScreen.entities;
 
 import utils.data.Coord;
 import utils.data.EntitySlot;
-import utils.data.Movement;
+import utils.data.Script;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,17 +11,17 @@ import com.badlogic.gdx.utils.Array;
 
 public class MovingEntity extends Entity{
 	
-	Movement Script = Movement.RANDOM;
+	Script script = Script.RANDOM;
 
 	public MovingEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection) 
 	{
 		super(passedID, passedName, position, passedSprite, passedAnimation, passedDirection);
 	}
 	
-	public MovingEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Movement script) 
+	public MovingEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Script script) 
 	{
 		super(passedID, passedName, position, passedSprite, passedAnimation, passedDirection);
-		Script = script;
+		this.script = script;
 	}
 	
 	public MovingEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots)
@@ -29,10 +29,10 @@ public class MovingEntity extends Entity{
 		super(passedID, passedName, position, passedSprite, passedAnimation, passedDirection, passedSlots);
 	}
 	
-	public MovingEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots, Movement script)
+	public MovingEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots, Script script)
 	{
 		super(passedID, passedName, position, passedSprite, passedAnimation, passedDirection, passedSlots);
-		Script = script;
+		this.script = script;
 	}
 
 	public void update()
