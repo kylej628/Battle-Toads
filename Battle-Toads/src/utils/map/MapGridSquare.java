@@ -17,7 +17,6 @@ public class MapGridSquare {
 	
 	private TiledMapTile TILE;
 	private int xPos, yPos, size, ID;
-	private SpriteBatch sb;
 	//Debugging - Will be removed
 	ShapeRenderer renderer;
 	
@@ -48,7 +47,6 @@ public class MapGridSquare {
 	public void dispose()
 	{
 		renderer.dispose();
-		sb.dispose();
 	}
 
 }

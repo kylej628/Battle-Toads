@@ -76,5 +76,16 @@ public class MapGrid {
 			}
 		}
 	}
+	
+	public void gridRefresh(MapWrapper map)
+	{
+		for(int i = 0; i < squares.length; i++)
+		{
+			for(int j = 0; j < squares[i].length; j++)
+			{
+				
+			}
+		}
+	}
 
 }
