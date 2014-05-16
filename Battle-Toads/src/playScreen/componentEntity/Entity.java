@@ -21,15 +21,15 @@ public class Entity
 	
 	//*\Data/*\\
 	public Coord position;
-	Texture[] sprite;
-	Animation animatedSprite;
+	Texture sprite;
+	Texture animatedSprite;
 	public int direction, originDirection;
 	Array<EntitySlot> slots;
 	public Array<Component> components;
 	boolean isInteractable = true;
 	boolean isInteracting = false;
 	
-	public Entity(String passedID, String passedName, Coord passedPosition, Texture[] passedSprite, Animation passedAnimation, int passedDirection)
+	public Entity(String passedID, String passedName, Coord passedPosition, Texture passedSprite, Texture passedAnimation, int passedDirection)
 	{
 		ID = passedID;
 		DisplayName = passedName;
@@ -49,7 +49,7 @@ public class Entity
 		slots.add(new EntitySlot(SlotType.WEAPON, "Left:"));	//Left hand slot (weapon)
 	}
 	
-	public Entity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots)
+	public Entity(String passedID, String passedName, Coord position, Texture passedSprite, Texture passedAnimation, int passedDirection, Array<EntitySlot> passedSlots)
 	{
 		ID = passedID;
 		DisplayName = passedName;
@@ -71,9 +71,9 @@ public class Entity
 	public void render(SpriteBatch batch)
 	{
 		if(isInteracting)
-			batch.draw(sprite[direction], position.getX(), position.getY());
-		else if(animatedSprite != null)
-			batch.draw(animatedSprite.getKeyFrame(Gdx.graphics.getDeltaTime()), position.getX(), position.getY());
+			batch.draw(sprite, position.getX(), position.getY());
+		else if(animatedSprite != null);
+			//batch.draw(animatedSprite.getKeyFrame(Gdx.graphics.getDeltaTime()), position.getX(), position.getY());
 	}
 	
 	public String getDisplayName()
