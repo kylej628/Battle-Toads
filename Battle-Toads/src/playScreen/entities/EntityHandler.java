@@ -2,6 +2,7 @@ package playScreen.entities;
 
 import utils.data.Coord;
 import utils.data.EntitySlot;
+import utils.xml.XMLReader;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -10,13 +11,19 @@ import com.badlogic.gdx.utils.Array;
 
 public class EntityHandler {
 	
-	Array<Entity> Stationaries;
-	Array<MovingEntity> Movables;
+	//Multidimensional arrays for entities <map><entity>
+	Array<Array<Entity>> Stationaries;
+	Array<Array<MovingEntity>> Movables;
 	
-	public EntityHandler()
+	XMLReader xml;
+	
+	public EntityHandler(XMLReader XML)
 	{
-		Stationaries = new Array<Entity>();
-		Movables = new Array<MovingEntity>();
+		//Links the xml readers
+		xml = XML;
+		
+		Stationaries = new Array<Array<Entity>>();
+		Movables = new Array<Array<MovingEntity>>();
 	}
 	
 	public void addStationaryEntity(String passedID, String passedName, Coord passedCoord, Texture[] passedSprite, Animation passedAnimation, int passedDirection)
@@ -37,6 +44,11 @@ public class EntityHandler {
 	public void addMovableEntity(String passedID, String passedName, Coord position, Texture[] passedSprite, Animation passedAnimation, int passedDirection, Array<EntitySlot> passedSlots)
 	{
 		Movables.add( new MovingEntity(passedID, passedName, position, passedSprite, passedAnimation, passedDirection, passedSlots));
+	}
+	
+	public void loadMap(String mapName)
+	{
+		Stationaries.add(new Array<Entity>());
 	}
 	
 	public void update(float delta, SpriteBatch batch)

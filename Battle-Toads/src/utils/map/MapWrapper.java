@@ -41,6 +41,10 @@ public class MapWrapper {
 		//Load entities
 		Element entities_element;
 		entities_element = reader.getElement(MAP_NAME).getChildByName("entities");
+		
+		//Entity temp information
+		
+		
 		for(int i = 0; i < entities_element.getChildCount(); i++)
 		{
 			entities_element.getChild(i);
