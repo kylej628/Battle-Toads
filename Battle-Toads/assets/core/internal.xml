@@ -45,6 +45,13 @@
 						<attacking frames="4" />
 					</Animation>
 				</e0002>
+				<e0003 type="stationary" name="Guard" x=>
+					<Texture 
+					<Animation 
+						<walking 
+						<attacking 
+					</Animation>					
+				</e0003>
 			</entities>
 		</spawn>
 		<wilderness mID="02">
