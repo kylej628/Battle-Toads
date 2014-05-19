@@ -7,16 +7,20 @@ import utils.data.Coord;
 import utils.data.Script;
 import utils.xml.XMLReader;
 
+enum Move{
+	LEFT, RIGHT, UP, DOWN, PAUSE, LOOK_RANDOM, MOVE_RANDOM
+}
+
 public class ScriptRunner {
 	
-	private String SCRIPT;
+	private Script SCRIPT;
 	private int speed, xBound, yBound;
 	private Entity entity;
-	private Array<Script> script;
+	private Array<Move> script;
 	
-	public ScriptRunner(String scriptName, int scriptSpeed, int xBound, int yBound, Entity scriptedEntity)
+	public ScriptRunner(Script script, int scriptSpeed, int xBound, int yBound, Entity scriptedEntity)
 	{
-		this.SCRIPT = scriptName;
+		this.SCRIPT = script;
 		this.speed = scriptSpeed;
 		this.entity = scriptedEntity;
 		this.xBound = xBound;
@@ -24,9 +28,9 @@ public class ScriptRunner {
 		this.loadScript(SCRIPT);
 	}
 	
-	public ScriptRunner(String scriptName, int scriptSpeed, Coord bounds, Entity scriptedEntity)
+	public ScriptRunner(Script script, int scriptSpeed, Coord bounds, Entity scriptedEntity)
 	{
-		this.SCRIPT = scriptName;
+		this.SCRIPT = script;
 		this.speed = scriptSpeed;
 		this.entity = scriptedEntity;
 		this.xBound = bounds.X;
@@ -39,10 +43,11 @@ public class ScriptRunner {
 		
 	}
 	
-	private void loadScript(String script)
+	private void loadScript(Script passedScript)
 	{
+		String name;
 		XMLReader xml = new XMLReader("assets/core/Scripts.xml", "Scripts");
-		Element element = xml.getElement(script);
+		Element element = xml.getElement(name);
 		for(int i = 0; i < element.getChildCount(); i++)
 		{
 			

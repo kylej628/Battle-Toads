@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+#Available moves: up, down, right, left, pause, move_random, look_random
 <Scripts>
 	<Patrol>
 		<Step_1>right</Step_1>
