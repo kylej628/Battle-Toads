@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="Map_Name" value="New_Spawn"/>
+ </properties>
  <tileset firstgid="1" name="dirt" tilewidth="32" tileheight="32">
   <image source="dirt.png" width="96" height="192"/>
  </tileset>
@@ -24,6 +27,9 @@
  <tileset firstgid="587" name="data" tilewidth="32" tileheight="32">
   <image source="data.png" width="96" height="32"/>
  </tileset>
+ <tileset firstgid="590" name="treecomp" tilewidth="32" tileheight="32">
+  <image source="treecomp.png" width="512" height="512"/>
+ </tileset>
  <layer name="Ground" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJyTZWBgkB3Fo3gUD2q8H4gPYMGHqGjHZSBeC8TdSBjEP0hlO0DmrgfiLiBeB+XTwo5KIN4AxGk0tGMuEFcA8Rwa2UHr+LgIxJew4CtUtGMUj+JRTDsMAHRTYoQ=
@@ -31,7 +37,7 @@
  </layer>
  <layer name="Tree Trunks" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2B4AytG/HxKgT3QPAcgdgTiaEZUPqUA5lZXIO0GxO44+OT6iVi3UuIndLdSqm4gAbHhPNTiYx0QdwPxegLqKAGXoXYcJFN/DSNuGpTvQDSyHcjihPTB+PuB9AECeA7UjrlEqEXGMABzIy0wzB8wO0DxeYnKGN0foLDWBmIdKmBdJPPR41MPiPWB2BRK65PJN0CyIxqHHZRiZDtw+YNc95ui2QEAAONgnA==
+   eJxjYBgFwxX0MTEw9DNB6ClQDOJTE8wDmjcRiCch4clUtgMEmoBmtgJxC5ReTIIdVoz4+TAA8ssSJDyfSDvsgeY5ALEjEEczovIpBTC3ugJpNyB2x8HH5SdS3A4CN9H8DONT4id0t1KqbiABseE81OJjHRB3A/F6AurIBVuA7r4MteMglE+q/hNMuGlQvjuBZgeyOCF9DFD1+4H0AQJ4DtSOuUSoRcbo4UALDPMHzA5QfF6iMkb3ByistYFYhwpYlwEB0ONTD4j1gdgUSuuTyTdAsgMU/9jsoBQj24HLH+S63xTNDgCP1n0/
   </data>
  </layer>
  <layer name="Tree Tops" width="25" height="25">
@@ -39,7 +45,7 @@
    eJxjYBgFowATCDEyMAgDsQgjdj41gATQLEkglmLEzicXILtVDojlgVgBaiYynxI/EetWSvyE7nZK1Q0UIDacR+NjFIyCUTAKSAMArR0FfQ==
   </data>
  </layer>
- <layer name="Data" width="25" height="25" opacity="0.46">
+ <layer name="Data" width="25" height="25" visible="0" opacity="0.46">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUUAq8mSC0DxMqfygAYt06lPw0lMFofGAH3ky4aVC+Qw8PdHFC+mgZnr50iCvfAfSHNxP1MLKZ6HZQAyCb40MHO0BsXyRMbTsAAIURNw==
   </data>

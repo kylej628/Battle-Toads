@@ -33,4 +33,9 @@
 			<g0001 destination="spawn" destinationX="1" destinationY="3" />
 		</gates>
 	</wilderness>
+	<New_Spawn mID="03" IFP="assets/play/map/New_Spawn.tmx">
+		<gates>
+			<g0001 destination="spawn" destinationX="10" destinationY="4" />
+		</gates>
+	</New_Spawn>
 </maps>

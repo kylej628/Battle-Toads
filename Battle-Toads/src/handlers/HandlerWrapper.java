@@ -22,7 +22,7 @@ public class HandlerWrapper
 	{
 		this.grid = new MapGrid();
 		
-		maps = new MapHandler("Spawn");
+		maps = new MapHandler("New_Spawn");
 		entities = new EntityHandler();
 		items = new ItemHandler();
 		

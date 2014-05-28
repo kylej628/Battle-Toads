@@ -100,7 +100,7 @@ public class PlayClass implements DebuggableScreen{
 		
 		if(Gdx.input.isButtonPressed(0))
 		{
-			dragMap();
+			dragMap(-Gdx.input.getDeltaX(), Gdx.input.getDeltaY());
 		}
 		
 		batch.end();
@@ -140,10 +140,7 @@ public class PlayClass implements DebuggableScreen{
 	public void dispose() {
 	}
 	
-	public void dragMap() {
-		float deltaX, deltaY;
-		deltaX = -Gdx.input.getDeltaX();
-		deltaY = Gdx.input.getDeltaY();	
+	public void dragMap(float deltaX, float deltaY) {
 		mapEdgeX = (int) ((int) handlers.maps.getCurrent().tiledMap.getProperties().get("width") * 32 - xCorOffset);
 		mapEdgeY = (int) ((int) handlers.maps.getCurrent().tiledMap.getProperties().get("height") * 32 - yCorOffset);
 		
