@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dirt" tilewidth="32" tileheight="32">
+  <image source="dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="grass" tilewidth="32" tileheight="32">
+  <image source="grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="watergrass" tilewidth="32" tileheight="32">
+  <image source="watergrass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="55" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="586" height="384"/>
+ </tileset>
+ <tileset firstgid="271" name="treetop" tilewidth="32" tileheight="32">
+  <image source="treetop.png" width="192" height="224"/>
+ </tileset>
+ <tileset firstgid="313" name="trunk" tilewidth="32" tileheight="32">
+  <image source="trunk.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="331" name="accessories" tilewidth="32" tileheight="32">
+  <image source="accessories.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="587" name="data" tilewidth="32" tileheight="32">
+  <image source="data.png" width="96" height="32"/>
+ </tileset>
+ <layer name="Ground" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJyTZWBgkB3Fo3gUD2q8H4gPYMGHqGjHZSBeC8TdSBjEP0hlO0DmrgfiLiBeB+XTwo5KIN4AxGk0tGMuEFcA8Rwa2UHr+LgIxJew4CtUtGMUj+JRTDsMAHRTYoQ=
+  </data>
+ </layer>
+ <layer name="Tree Trunks" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2B4AytG/HxKgT3QPAcgdgTiaEZUPqUA5lZXIO0GxO44+OT6iVi3UuIndLdSqm4gAbHhPNTiYx0QdwPxegLqKAGXoXYcJFN/DSNuGpTvQDSyHcjihPTB+PuB9AECeA7UjrlEqEXGMABzIy0wzB8wO0DxeYnKGN0foLDWBmIdKmBdJPPR41MPiPWB2BRK65PJN0CyIxqHHZRiZDtw+YNc95ui2QEAAONgnA==
+  </data>
+ </layer>
+ <layer name="Tree Tops" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowATCDEyMAgDsQgjdj41gATQLEkglmLEzicXILtVDojlgVgBaiYynxI/EetWSvyE7nZK1Q0UIDacR+NjFIyCUTAKSAMArR0FfQ==
+  </data>
+ </layer>
+ <layer name="Data" width="25" height="25" opacity="0.46">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUUAq8mSC0DxMqfygAYt06lPw0lMFofGAH3ky4aVC+Qw8PdHFC+mgZnr50iCvfAfSHNxP1MLKZ6HZQAyCb40MHO0BsXyRMbTsAAIURNw==
+  </data>
+ </layer>
+</map>
