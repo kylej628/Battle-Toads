@@ -1,7 +1,10 @@
 package utils.xml;
 
+import java.io.IOException;
+
 import org.w3c.dom.NodeList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
@@ -23,7 +26,12 @@ public class XMLReader
 	public XMLReader(String file, String RootKey)
 	{
 		reader = new XmlReader();
-		ROOT = reader.parse(file);
+		try {
+			ROOT = reader.parse(Gdx.files.internal(file));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public String getData(String Key)
@@ -49,7 +57,10 @@ public class XMLReader
 	
 	public Element getElement(String id)
 	{
-		return ROOT.getChildByNameRecursive(id);
+		if(id.equalsIgnoreCase("maps") || id.equalsIgnoreCase("items") || id.equalsIgnoreCase("entities"))
+			return ROOT;
+		else
+			return ROOT.getChildByNameRecursive(id);
 	}
 	
 	public Array<Element> getList(String tag)

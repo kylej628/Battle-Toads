@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.math.Matrix4;
 
 /**
  * Square to be used with MapGrid.java
@@ -15,17 +17,17 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
  */
 public class MapGridSquare {
 	
-	private TiledMapTile TILE;
+	private Cell TILE;
 	private int xPos, yPos, size, ID;
 	//Debugging - Will be removed
 	ShapeRenderer renderer;
 	
 	
-	public MapGridSquare(int xPos, int yPos, int size, TiledMapTile tile)
+	public MapGridSquare(int xPos, int yPos, int size, Cell cell)
 	{
-		this.TILE = tile;
-		if(tile != null)
-			this.ID = TILE.getId();
+		this.TILE = cell;
+		if(cell != null)
+			this.ID = TILE.getTile().getId();
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.size = size;
@@ -36,9 +38,10 @@ public class MapGridSquare {
 		renderer.setColor(0, 0, 1.0f, 1);
 	}
 	
-	public void render()
+	public void render(Matrix4 matrix)
 	{
 		//debugging rectangle
+		renderer.setProjectionMatrix(matrix);
 		renderer.begin(ShapeType.Line);
 		renderer.rect(xPos, yPos, size, size);
 		renderer.end();

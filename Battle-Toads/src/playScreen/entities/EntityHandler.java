@@ -46,35 +46,58 @@ public class EntityHandler {
 				Element temp = Entity_Element.getChild(i);
 				//Prepare information for loading
 				//String passedID, String passedName, Coord passedPosition, Texture passedSprite, Texture passedAnimation, int passedDirection
-				String ID, NAME;
+				String ID, NAME, Default;
 				Coord position;
 				Texture sprite, animation;
-				int x, y, direction;
+				int x, y, direction, walkingFrames, attackingFrames;
+				boolean isDefaultAvailable = false;
+				
+				if(temp.getChildByName("Default") != null && !temp.getChildByName("Default").getText().equalsIgnoreCase("none"))
+					isDefaultAvailable = true;
+				else
+				{
+					isDefaultAvailable = false;
+					Default = temp.getChildByName("Default").getText();
+					Element tempDefault = EntityXml.getElement(Default);
+				}
+				
 				
 				/*ID*/
 				ID = temp.getName();
 				/*Name*/
 				if(temp.getAttribute("name") != null)
 					NAME = temp.getAttribute("name");
-				else
-					
+				else if(isDefaultAvailable)
+					//NAME = Default;
 				/*X Position*/
 				if(temp.getAttribute("x") != null)
 					x = Integer.parseInt(temp.getAttribute("x"));
-				else
-					
+				else if(isDefaultAvailable)
+					{x = 0; System.out.println("ID: " + ID + " has no X value");}
 				/*Y Position*/
 				if(temp.getAttribute("y") != null)
 					y = Integer.parseInt(temp.getAttribute("x"));
-				else
-					
+				else if(isDefaultAvailable)
+					{y = 0; System.out.println("ID: " + ID + " has no Y value");}
 				/*Texture*/
 				if(temp.getChildByName("Texture").getAttribute("path") != null)
 					sprite = new Texture(temp.getChildByName("Texture").getAttribute("path"));
-				else
-					
-				
+				else if(isDefaultAvailable)
+					//sprite = tempDefault.getChildByName("Texture").getAttribute("path") 
 				/*Animation*/
+				if(temp.getChildByName("Animation").getAttribute("path") != null)
+					animation = new Texture(temp.getChildByName("Animation").getAttribute("path"));
+				else if(isDefaultAvailable)
+					
+				/*Walking Frames*/
+				if(temp.getChildByName("Animation").getChildByName("walking").getAttribute("frames") != null)
+					walkingFrames = Integer.parseInt(temp.getChildByName("Animation").getChildByName("walking").getAttribute("frames"));
+				else if(isDefaultAvailable)
+					
+				/*Attacking Frames*/
+				if(temp.getChildByName("Animation").getChildByName("attacking").getAttribute("frames") != null)
+					attackingFrames = Integer.parseInt(temp.getChildByName("Animation").getChildByName("attacking").getAttribute("frames"));
+				else if(isDefaultAvailable);
 			}
 			
 			//If it of the stationary variety - DEFAULT

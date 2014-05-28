@@ -44,10 +44,8 @@ public class GameConfigureClass implements DebuggableScreen
 		if(back.isClicked())
 			GAME.setScreen(GAME.menu);
 		if(Map1.isClicked()){
-			GAME.play.CurrentMap = "assets/play/map/testMap.tmx";
 			GAME.setScreen(GAME.play);}
 		if(Map2.isClicked()){
-			GAME.play.CurrentMap = "assets/play/map/testMap2.tmx";
 			GAME.setScreen(GAME.play);}
 	}
 

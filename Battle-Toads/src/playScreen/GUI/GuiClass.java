@@ -47,7 +47,7 @@ public class GuiClass implements TacoClass{
 	{
 		batch.begin();
 		batch.draw(GUIBacking, 0, 0);
-		font.draw(batch, "This is a test", 20, 20);
+		//font.draw(batch, "This is a test", 20, 20);
 		batch.end();
 	}
 

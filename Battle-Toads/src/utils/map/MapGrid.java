@@ -1,91 +1,49 @@
 package utils.map;
 
-import com.badlogic.gdx.maps.MapProperties;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import utils.data.Property;
 
-public class MapGrid {
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Matrix4;
+
+public class MapGrid{
 	
-	//Debugging -------------//
-	private ShapeRenderer ShapeR;
-	
-	//Variables ------------//
-	TiledMap tmx;
-	MapProperties props;
+	//Variables
 	MapGridSquare[][] squares;
-	OrthographicCamera cam;
+	private int WIDTH, HEIGHT, TILE_SIZE;
+	TiledMapTileLayer mapLayer;
 	
-	//Basic Variables -----//
-	protected int WIDTH, HEIGHT;
-	
-	
-	/**
-	 * creates a grid based off of the tiled map
-	 * - used for manipulation and board setup
-	 * @param passedTmx - TiledMap
-	 */
-	public MapGrid(TiledMap passedTmx, OrthographicCamera PassedCam)
+	public MapGrid()
 	{
-		//Pull the TMX map and info ------------//
-		this.tmx = passedTmx;
-		props = tmx.getProperties();
-		int WIDTH = props.get("width", Integer.class);
-		System.out.println("Width: " + WIDTH);
-		int HEIGHT = props.get("height", Integer.class);
-		System.out.println("Height: " + HEIGHT);
-		int tilePixelWidth = props.get("tilewidth", Integer.class);
-		System.out.println("PixelWidth: " + tilePixelWidth);
-		int tilePixelHeight = props.get("tileheight", Integer.class);
-		System.out.println("PixelHeight: " + tilePixelHeight);
+		System.out.println("MapGrid has been created");
 		
-		//Link the camera to this camera -------//
-		this.cam = PassedCam;
-		
+	}
+	
+	public void load(MapWrapper map)
+	{
+		WIDTH = Integer.parseInt(map.getProperty(Property.WIDTH));
+		HEIGHT = Integer.parseInt(map.getProperty(Property.HEIGHT));
+		TILE_SIZE = Integer.parseInt(map.getProperty(Property.TILE_SIZE));
+		mapLayer = (TiledMapTileLayer) map.tiledMap.getLayers().get(0);
 		squares = new MapGridSquare[WIDTH][HEIGHT];
 		for(int i = 0; i < WIDTH; i++)
 		{
 			for(int j = 0; j < HEIGHT; j++)
 			{
-				squares[i][j] = new MapGridSquare(i * tilePixelWidth, j * tilePixelHeight, tilePixelWidth, null);
+				squares[i][j] = new MapGridSquare(i*TILE_SIZE, j*TILE_SIZE, TILE_SIZE, mapLayer.getCell(i, j));
 			}
 		}
-	}
-	
-	/**
-	 * Used if anything needs to change on the map, special events / tile changes
-	 */
-	public void update()
-	{
 		
 	}
 	
-	/**
-	 * At this point there is no need for a spriteBatch but I'm putting it
-	 * in there for future thinking!
-	 * @param SB
-	 */
-	public void render(SpriteBatch SB)
+	public void render(Matrix4 matrix)
 	{
-		for(int i = 0; i < this.WIDTH; i++)
+		for(int i = 0; i < WIDTH; i++)
 		{
-			for(int j = 0; j < this.HEIGHT; j++)
+			for(int j = 0; j < HEIGHT; j++)
 			{
-				squares[i][j].render();
+				squares[i][j].render(matrix);
 			}
 		}
 	}
-	
-	public void gridRefresh(MapWrapper map)
-	{
-		for(int i = 0; i < squares.length; i++)
-		{
-			for(int j = 0; j < squares[i].length; j++)
-			{
-				
-			}
-		}
-	}
-
 }
