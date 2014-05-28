@@ -25,6 +25,7 @@ public class PlayClass implements DebuggableScreen{
 	
 	float xCorOffset, yCorOffset;
 	float xTrueCam, yTrueCam;
+	int mapEdgeX = 0, mapEdgeY=0;
 	
 	
 	//Sprite Batch --//
@@ -78,6 +79,7 @@ public class PlayClass implements DebuggableScreen{
 
 	double tempX = 0;
 	double tempY = 0;
+	
 	@Override
 	public void render(float delta) {
 		//Mouse update ---------//
@@ -98,25 +100,7 @@ public class PlayClass implements DebuggableScreen{
 		
 		if(Gdx.input.isButtonPressed(0))
 		{
-
-			float destinationX, destinationY;
-			xTrueCam = cam.position.x - xCorOffset;
-			yTrueCam = cam.position.y - yCorOffset;
-			
-			float temp1 = -Gdx.input.getDeltaX();
-			float temp2 = Gdx.input.getDeltaY();
-			
-			destinationX = (float) (xTrueCam + temp1);
-			destinationY = (float) (yTrueCam + temp2);
-			
-			if(destinationX < 0 && cam.position.x > 0)
-				destinationX = 0;
-			if(destinationY < 0 && cam.position.y > 0)
-				destinationY = 0;
-			
-			cam.position.set((destinationX - xCorOffset), (destinationY - yCorOffset), 0f);
-			
-			batch.setProjectionMatrix(cam.combined);
+			dragMap();
 		}
 		
 		batch.end();
@@ -154,6 +138,25 @@ public class PlayClass implements DebuggableScreen{
 
 	@Override
 	public void dispose() {
+	}
+	
+	public void dragMap() {
+		float deltaX, deltaY;
+		deltaX = -Gdx.input.getDeltaX();
+		deltaY = Gdx.input.getDeltaY();	
+		mapEdgeX = (int) ((int) handlers.maps.getCurrent().tiledMap.getProperties().get("width") * 32 - xCorOffset);
+		mapEdgeY = (int) ((int) handlers.maps.getCurrent().tiledMap.getProperties().get("height") * 32 - yCorOffset);
+		
+		cam.translate(deltaX, deltaY);
+		
+		if(cam.position.x <= xCorOffset)
+			cam.position.set(xCorOffset, cam.position.y, 0f);
+		if(cam.position.x >= mapEdgeX)
+			cam.position.set(mapEdgeX, cam.position.y, 0f);
+		if(cam.position.y <= yCorOffset)
+			cam.position.set(cam.position.x, yCorOffset, 0f);
+		if(cam.position.y >= mapEdgeY)
+			cam.position.set(cam.position.x, mapEdgeY, 0f);
 	}
 
 	@Override

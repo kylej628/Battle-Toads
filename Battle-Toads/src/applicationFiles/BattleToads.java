@@ -1,10 +1,16 @@
 package applicationFiles;
 
+import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Cursor;
+import org.lwjgl.input.Mouse;
+
 import screens.*;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -17,6 +23,8 @@ public class BattleToads extends Game{
 	public HowToClass howto;
 	public GameConfigureClass configure;	
 	public BitmapFont font;
+	
+	public InputProcessor input;
 	
 	boolean ESCAPEOverride = false;
 	boolean Debugging = false;

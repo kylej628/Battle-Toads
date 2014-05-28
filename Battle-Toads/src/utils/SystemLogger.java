@@ -12,7 +12,7 @@ public class SystemLogger
 	{
 		StackTraceElement[] e;
 		e = Thread.currentThread().getStackTrace();
-		System.out.println("[ERROR]: " + e[1].getClassName() + " : " + msg);
+		System.out.println("[ERROR]: " + e[2].getClassName() + " : " + msg);
 	}
 	
 }
