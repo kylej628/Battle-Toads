@@ -2,6 +2,7 @@ package screens;
 
 import handlers.HandlerWrapper;
 import playScreen.GUI.GuiClass;
+import utils.data.Justify;
 import utils.data.Property;
 import utils.map.MapGrid;
 import applicationFiles.BattleToads;
@@ -70,7 +71,7 @@ public class PlayClass implements DebuggableScreen{
 		debug.enableBlending();
 		
 		//Initializes the GUI --------------//
-		GUI = new GuiClass();
+		GUI = new GuiClass(56, Justify.CENTER);
 		
 		handlers = new HandlerWrapper(cam);
 		
@@ -152,8 +153,8 @@ public class PlayClass implements DebuggableScreen{
 			cam.position.set(mapEdgeX, cam.position.y, 0f);
 		if(cam.position.y <= yCorOffset)
 			cam.position.set(cam.position.x, yCorOffset, 0f);
-		if(cam.position.y >= mapEdgeY)
-			cam.position.set(cam.position.x, mapEdgeY, 0f);
+		if(cam.position.y >= mapEdgeY + GUI.getWidth())
+			cam.position.set(cam.position.x, mapEdgeY + GUI.getWidth(), 0f);
 	}
 
 	@Override
