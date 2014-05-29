@@ -11,6 +11,7 @@ public class DesktopGame {
     	config.height = 600;
     	config.title = "Battle Toads";
     	config.useGL20 = true;
+    	config.vSyncEnabled = false;
         new LwjglApplication(new BattleToads(), config);
     }
 }

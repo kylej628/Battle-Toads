@@ -1,14 +1,12 @@
 package applicationFiles;
 
-import org.lwjgl.LWJGLException;
-import org.lwjgl.input.Cursor;
 import org.lwjgl.input.Mouse;
 
 import screens.*;
+import utils.selection.Pointer;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.FPSLogger;
@@ -24,6 +22,7 @@ public class BattleToads extends Game{
 	public GameConfigureClass configure;	
 	public BitmapFont font;
 	
+	public Pointer pointer;
 	public InputProcessor input;
 	
 	boolean ESCAPEOverride = false;
@@ -36,6 +35,9 @@ public class BattleToads extends Game{
 	@Override
 	public void create() 
 	{
+		Mouse.setGrabbed(true);
+		Mouse.setClipMouseCoordinatesToWindow(true);
+		pointer = new Pointer();
 		log = new FPSLogger();
 		font = new BitmapFont();
 		menu = new MenuClass(this);
@@ -48,6 +50,7 @@ public class BattleToads extends Game{
 	
 	public void render()
 	{
+		pointer.update();
 		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         super.render();
@@ -55,6 +58,7 @@ public class BattleToads extends Game{
         log.log();
         if(Debugging)
         	((DebuggableScreen) this.getScreen()).debug();
+        pointer.render();
 	}
 	
 	private void update()

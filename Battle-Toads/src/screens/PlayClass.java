@@ -3,18 +3,15 @@ package screens;
 import handlers.HandlerWrapper;
 import playScreen.GUI.GuiClass;
 import utils.data.Justify;
-import utils.data.Property;
-import utils.map.MapGrid;
+import utils.selection.Pointer;
 import applicationFiles.BattleToads;
 import applicationFiles.DebuggableScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 public class PlayClass implements DebuggableScreen{
 	
@@ -71,7 +68,7 @@ public class PlayClass implements DebuggableScreen{
 		debug.enableBlending();
 		
 		//Initializes the GUI --------------//
-		GUI = new GuiClass(56, Justify.TOP);
+		GUI = new GuiClass(new Texture(Gdx.files.internal("assets/play/GUI Resources/GUI_Main_Back.png")), 0, 0, Justify.LEFT_TOP);
 		
 		handlers = new HandlerWrapper(cam);
 		
@@ -99,10 +96,12 @@ public class PlayClass implements DebuggableScreen{
 		batch.begin();
 		cam.update();
 		
-		if(Gdx.input.isButtonPressed(0))
+		if(Pointer.isDragging)
 		{
 			dragMap(-Gdx.input.getDeltaX(), Gdx.input.getDeltaY());
 		}
+		else if(Pointer.isClicky)
+			System.out.println("Clicky!");
 		
 		batch.end();
 		debug.begin();
@@ -153,8 +152,8 @@ public class PlayClass implements DebuggableScreen{
 			cam.position.set(mapEdgeX, cam.position.y, 0f);
 		if(cam.position.y <= yCorOffset)
 			cam.position.set(cam.position.x, yCorOffset, 0f);
-		if(cam.position.y >= mapEdgeY + GUI.getWidth())
-			cam.position.set(cam.position.x, mapEdgeY + GUI.getWidth(), 0f);
+		if(cam.position.y >= mapEdgeY + GUI.getHeight())
+			cam.position.set(cam.position.x, mapEdgeY + GUI.getHeight(), 0f);
 	}
 
 	@Override
