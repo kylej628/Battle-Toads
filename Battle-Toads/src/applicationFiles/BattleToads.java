@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+import com.badlogic.gdx.Version;
+
 public class BattleToads extends Game{
 	
 	public MenuClass menu;
@@ -35,6 +37,7 @@ public class BattleToads extends Game{
 	@Override
 	public void create() 
 	{
+		System.out.println(new Version().VERSION);
 		Mouse.setGrabbed(true);
 		Mouse.setClipMouseCoordinatesToWindow(true);
 		pointer = new Pointer();

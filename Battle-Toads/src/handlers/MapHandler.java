@@ -9,6 +9,7 @@ import utils.xml.XMLReader;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
@@ -70,8 +71,13 @@ public class MapHandler
 	public void render(SpriteBatch batch, OrthographicCamera cam)
 	{
 		renderer.setView(cam);
-		renderer.render();
+		//renderer.render();
 		maps.get(CURRENT_MAP).render(batch);
+		for(int i = 0; i < renderer.getMap().getLayers().getCount(); i++)
+		{
+			if(!renderer.getMap().getLayers().get(i).getName().equalsIgnoreCase("data"))
+			renderer.renderTileLayer((TiledMapTileLayer) renderer.getMap().getLayers().get(i));
+		}
 	}
 
 	public MapWrapper getCurrent()

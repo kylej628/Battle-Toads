@@ -4,7 +4,6 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 import utils.data.Coord;
-import utils.data.Script;
 import utils.xml.XMLReader;
 
 enum Move{

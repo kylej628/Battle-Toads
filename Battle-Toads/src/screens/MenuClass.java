@@ -35,7 +35,7 @@ public class MenuClass implements DebuggableScreen{
 		sb.end();
 		if(Button_Play.isClicked())
 		{
-			GAME.setScreen(GAME.configure);
+			GAME.setScreen(GAME.play);
 		}
 		if(Button_Options.isClicked())
 		{

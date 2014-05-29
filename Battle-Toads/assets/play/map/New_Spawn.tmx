@@ -30,6 +30,9 @@
  <tileset firstgid="590" name="treecomp" tilewidth="32" tileheight="32">
   <image source="treecomp.png" width="512" height="512"/>
  </tileset>
+ <tileset firstgid="846" name="fence" tilewidth="32" tileheight="32">
+  <image source="fence.png" width="32" height="32"/>
+ </tileset>
  <layer name="Ground" width="35" height="35">
   <data encoding="base64" compression="zlib">
    eJzt18kNwjAQBdBphArYQaQkaoAWoAXSAqEDlg5YOkgj/EixsCIDjjPxzMGHdxgrUX7skS1nRDR1yITGjZWycY0k5+LX+sXqkYUigyRJEmXOcHG4CWR5Qgl7S1VfhbJU3y9gB8e6lsyyhROsFWTJYQMH4Sxa+uUOD/r0SVHXL4EszbWSmA+pLN/2M5vp2dzj2X98/jkWnyymL7k0+93w7YUhjBiMKazH7Hcm5L7XtK1njFm66iNL6PxwZJkTz31s2TELx95hCzlH+95fQrJw7y9Gm3M09rn3Bi4pMOM=
@@ -37,7 +40,7 @@
  </layer>
  <layer name="Tree Trunks" width="35" height="35">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRQCnoY2Jg6GeC0FOgGMQfCDAPaO9EIJ6EhCcPkFtAoAlodysQt0DpxVR2iyUjA4MVEFszYucjA1DYLEHC86nsFnugnQ5A7AjE0YyofHoAZL+7ArEbELtD7Ubm4wsjagF0v99EC2sYnx5hhB4WlKobLoDYdDCaXihTR02whQk/n5r2nGDCTYPKtxNodiOLE9KPbg4+f6DbM5CAVuFNDhiJ4YKcfnABeoULMfbQM1wIgdFwwQ4GU7hE06kuGWrhgq3eI6WeIYWGAQCMllOb
+   eJxjYBgFo2AUjIJRQCnoY2Jg6GeC0FOgGMQfCDAPaO9EIJ6EhCcPkFtAoAlodysQt0DpxVR2iyUjA4MVEFszYucjA1DYLEHC86nsFnugnQ5A7AjE0YyofHoAZL+7ArEbELtD7Ubm4wsjagF0v99EC2sYnx5hhB4WlKobLoDYdDCaXihTR02whQk/n5r2nGDCTYPKtxNodiOLE9KPbg4+f6DbM5CAVuFNDkAPFz9m6mFSAb3CBTn94AL0Si/E2EPPcCEERsMFOxhM4RJNp7pkqIULtnqPlHqGFBoGAKWyWZ4=
   </data>
  </layer>
  <layer name="Tree Tops" width="35" height="35">
