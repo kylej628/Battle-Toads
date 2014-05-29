@@ -71,7 +71,7 @@ public class PlayClass implements DebuggableScreen{
 		debug.enableBlending();
 		
 		//Initializes the GUI --------------//
-		GUI = new GuiClass(56, Justify.CENTER);
+		GUI = new GuiClass(56, Justify.TOP);
 		
 		handlers = new HandlerWrapper(cam);
 		
